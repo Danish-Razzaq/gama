@@ -55,6 +55,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -63,7 +65,9 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
   const navigate = (route) => {
     setCurrentRoute(route);
     setMobileMenuOpen(false);
-    window.scrollTo(0, 0);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   };
 
   return (
@@ -561,9 +565,11 @@ const CrossPlatformExperience = () => {
       setActiveIndex(closestIndex);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
   const isMobile = activeIndex === 4;
@@ -604,7 +610,7 @@ const CrossPlatformExperience = () => {
 
                     <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 transition-all duration-700 relative overflow-hidden ${activeIndex === i ? 'bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-gray-100 lg:translate-x-4' : 'bg-transparent border border-transparent'}`}>
                       <div className={`relative z-10 transition-transform duration-700 ${activeIndex === i ? 'scale-110 text-[#FF5C00]' : 'scale-100 text-gray-400'}`}>
-                        {React.cloneElement(f.icon, { size: window.innerWidth < 640 ? 24 : 28 })}
+                        {React.cloneElement(f.icon, { size: typeof window !== 'undefined' && window.innerWidth < 640 ? 24 : 28 })}
                       </div>
                     </div>
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-normal text-gray-900 mb-4 sm:mb-6 tracking-tight leading-tight">{f.title}</h3>
@@ -1314,8 +1320,10 @@ const FinalCTA = ({ onOpenDemo }) => {
 // 16. Footer (Minimal)
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.getElementById('top-of-page')?.scrollIntoView({ behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('top-of-page')?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const footerLinks = [
