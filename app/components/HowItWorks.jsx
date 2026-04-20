@@ -263,10 +263,10 @@ export const PlatformFeatures = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
           <div>
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#FF5C00] mb-6 tracking-tight">
               How it works.
             </h2>
-            <p className="text-lg font-light text-slate-400 max-w-xl leading-relaxed">
+            <p className="text-lg font-light text-slate-200 max-w-xl leading-relaxed">
               A comprehensive toolkit designed to modernize your forwarding operations and empower shippers to self-serve.
             </p>
           </div>
@@ -283,7 +283,7 @@ export const PlatformFeatures = () => {
                 <div className="w-14 h-14 rounded-2xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-slate-400 mb-8 group-hover:text-[#FF5C00] group-hover:border-[rgba(255,92,0,0.3)] group-hover:bg-[rgba(255,92,0,0.08)] transition-all duration-500">
                   <Search size={22} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-normal text-white mb-4 tracking-wide">Search & Quote</h3>
+                <h3 className="text-2xl font-normal text-white mb-4 tracking-wide ">Search & Quote</h3>
                 <p className="text-base font-light text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
                   Fast, reliable freight shipping rates search gives your customers on-demand pricing across all modes—with your controlled markup.
                 </p>
@@ -291,7 +291,7 @@ export const PlatformFeatures = () => {
 
               <div className="hidden md:flex absolute right-0 bottom-0 w-[45%] h-[85%] bg-[#080C14] rounded-tl-[2rem] border-t border-l border-white/[0.07] flex-col p-8 transition-all duration-700 translate-x-10 translate-y-10 group-hover:translate-x-0 group-hover:translate-y-0">
                 <div className="flex justify-between items-center mb-8">
-                  <div className="text-[10px] font-normal tracking-[0.2em] uppercase text-white">CNSHA</div>
+                  <div className="text-[10px] font-normal tracking-[0.2em] uppercase text-[#FF5C00]">CNSHA</div>
                   <div className="flex-1 h-px bg-white/[0.08] mx-5 relative overflow-hidden">
                     <Plane
                       className="absolute top-1/2 -translate-y-1/2 left-0 text-[#FF5C00] opacity-0 group-hover:opacity-100 group-hover:left-[calc(100%-14px)] transition-all duration-[1100ms] ease-[cubic-bezier(0.25,1,0.5,1)]"
@@ -299,7 +299,7 @@ export const PlatformFeatures = () => {
                       strokeWidth={1.5}
                     />
                   </div>
-                  <div className="text-[10px] font-normal tracking-[0.2em] uppercase text-white">USLAX</div>
+                  <div className="text-[10px] font-normal tracking-[0.2em] uppercase text-[#FF5C00]">USLAX</div>
                 </div>
                 <div className="bg-white/[0.04] p-6 rounded-2xl border border-white/[0.07] mt-auto flex flex-col gap-4">
                   <div className="text-[9px] text-slate-500 uppercase tracking-[0.2em] font-normal">Ocean FCL • 20 Days</div>
