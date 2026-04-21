@@ -263,7 +263,7 @@ export const PlatformFeatures = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#FF5C00] mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-light text-[#FF5C00] mb-6 tracking-tight">
               How it works.
             </h2>
             <p className="text-lg font-light text-slate-200 max-w-xl leading-relaxed">

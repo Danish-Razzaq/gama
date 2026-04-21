@@ -11,9 +11,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
+// import { Poppins, Geist_Mono } from "next/font/google";
+// import "./globals.css";
+
+// const poppins = Poppins({
+//   variable: "--font-poppins",
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "600", "700"],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
 export const metadata = {
-  title: "Gama - Modern Web Solutions",
-  description: "Building innovative solutions for the modern web with cutting-edge technology",
+  title: "Gama | Freight Forwarding Software & Logistics Automation Platform",
+  description:
+    "Gama is a modern white-label freight forwarding software for forwarders and NVOCCs. Empower customers to search rates, get quotes, book shipments, track cargo in real time, manage documents, pay invoices, and gain actionable insights—all in one branded logistics platform.",
 };
 
 export default function RootLayout({ children }) {

@@ -13,6 +13,7 @@ import {
 
 import {PlatformFeatures} from './components/HowItWorks'
 import {CrossPlatformExperience} from './components/CrossPlatformExperience'
+import {BcoOperationsExample} from './components/BcoOperationsExample'
 
 
 // --- Custom Hooks ---
@@ -539,103 +540,7 @@ const BcoVsClimax = () => {
   );
 };
 
-const BcoOperationsExample = () => {
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
 
-  const steps = [
-    {
-      phase: "Phase 1: Origin & Booking",
-      title: "Consolidating the shipment.",
-      desc: "Instead of emailing multiple forwarders back and forth, simply log into the Gama BCO portal. Your international bookings are already logged. Master BOLs, packing lists, and origin terminal updates are instantly centralized via API sync, giving your team immediate access to the ground truth without checking a single spreadsheet.",
-      placeholder: "Screenshot: Unified Booking & Document Vault",
-      icon: <Box className="text-[#FF5C00]" size={24} strokeWidth={1.5} />
-    },
-    {
-      phase: "Phase 2: In Transit",
-      title: "Live tracking & predictive alerts.",
-      desc: "Once the vessel departs, stop relying on outdated carrier websites. Instantly view live GPS coordinates directly on the Gama map. As your containers approach their destination, the predictive engine warns you of potential terminal congestion, allowing your drayage team to adjust schedules ahead of time and avoid costly demurrage.",
-      placeholder: "Screenshot: Live Map & Exceptions Dashboard",
-      icon: <MapPin className="text-[#FF5C00]" size={24} strokeWidth={1.5} />,
-      reverse: true
-    },
-    {
-      phase: "Phase 3: Destination & Compliance",
-      title: "Automated customs handoff.",
-      desc: "Before the cargo even arrives, Gama automatically screens the documentation and triggers an immediate ISF filing alert to your customs broker. You securely download the Commercial Invoice with one click. Zero compliance delays, zero frantic phone calls—just a smooth handover at the port.",
-      placeholder: "Screenshot: Compliance Alerts & Customs Handoff",
-      icon: <ShieldCheck className="text-[#FF5C00]" size={24} strokeWidth={1.5} />
-    }
-  ];
-
-  return (
-    <section className="py-24 lg:py-32 relative z-10 bg-[#FAFAFA]" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 sm:px-10">
-        
-        <div className={`text-center mb-20 lg:mb-32 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-           <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-gray-200/80 bg-white mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-              <span className="flex h-1.5 w-1.5 rounded-full bg-green-500"></span>
-              <span className="text-[10px] font-medium text-gray-500 tracking-[0.2em] uppercase">Real-Life Example</span>
-           </div>
-           <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
-             Managing global shipments <br className="hidden sm:block"/>
-             <span className="orange-hover-fx font-normal">without the chaos.</span>
-           </h2>
-           <p className="text-lg font-light text-gray-500 max-w-2xl mx-auto leading-relaxed">
-             See exactly how Gama BCO replaces scattered email threads and fragmented spreadsheets with a single, unified operational timeline.
-           </p>
-        </div>
-
-        <div className="flex flex-col gap-24 lg:gap-32">
-           {steps.map((step, i) => (
-             <div key={i} className={`flex flex-col ${step.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-20 transition-all duration-1000 delay-${i * 200} transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-                
-                {/* Text Content */}
-                <div className="w-full lg:w-5/12 flex flex-col">
-                   <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center mb-6">
-                      {step.icon}
-                   </div>
-                   <div className="text-[10px] font-medium text-gray-400 uppercase tracking-widest mb-3">{step.phase}</div>
-                   <h3 className="text-2xl lg:text-3xl font-normal text-gray-900 mb-6">{step.title}</h3>
-                   <p className="text-base lg:text-lg font-light text-gray-500 leading-relaxed">
-                     {step.desc}
-                   </p>
-                </div>
-
-                {/* Screenshot Placeholder (Mac OS Window Style) */}
-                <div className="w-full lg:w-7/12">
-                   <div className="w-full h-64 sm:h-80 lg:h-[400px] bg-white rounded-[2rem] border border-gray-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)] hover:-translate-y-1">
-                      
-                      {/* Window Header */}
-                      <div className="h-12 bg-gray-50/80 border-b border-gray-100 flex items-center px-5 gap-2.5">
-                        <div className="w-3 h-3 rounded-full bg-gray-200 group-hover:bg-red-400 transition-colors duration-300"></div>
-                        <div className="w-3 h-3 rounded-full bg-gray-200 group-hover:bg-yellow-400 transition-colors duration-300 delay-75"></div>
-                        <div className="w-3 h-3 rounded-full bg-gray-200 group-hover:bg-green-400 transition-colors duration-300 delay-150"></div>
-                      </div>
-                      
-                      {/* Inner Content / Placeholder Area */}
-                      <div className="flex-1 flex items-center justify-center relative overflow-hidden bg-white">
-                         {/* Subtle grid pattern for technical feel */}
-                         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:2rem_2rem]"></div>
-                         
-                         {/* Indicator Icon & Text */}
-                         <div className="text-center relative z-10 flex flex-col items-center px-6">
-                            <Image size={32} className="text-gray-300 mb-4 transform group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
-                            <span className="text-sm font-medium text-gray-400 uppercase tracking-widest">{step.placeholder}</span>
-                            <span className="text-xs font-light text-gray-400 mt-2 max-w-xs">(Replace with actual CRM screenshot)</span>
-                         </div>
-                      </div>
-
-                   </div>
-                </div>
-
-             </div>
-           ))}
-        </div>
-
-      </div>
-    </section>
-  );
-};
 
 const BcoUseCase = () => {
   const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
