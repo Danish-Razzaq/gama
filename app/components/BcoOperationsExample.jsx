@@ -368,7 +368,7 @@ export const BcoOperationsExample = () => {
                 </div>
 
                 {/* Window card side */}
-                <div className="w-full lg:w-7/12">
+                <div className="w-full lg:w-7/12 max-lg:mb-4">
                   <WindowCard
                     placeholder={step.placeholder}
                     isVisible={isVisible}
