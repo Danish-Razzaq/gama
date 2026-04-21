@@ -67,13 +67,10 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (!mounted) return;
-    
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -82,85 +79,187 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
   const navigate = (route) => {
     setCurrentRoute(route);
     setMobileMenuOpen(false);
-    if (mounted) {
-      window.scrollTo(0, 0);
-    }
+    if (mounted) window.scrollTo(0, 0);
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'py-4 bg-[#FF5C00] shadow-[0_4px_20px_rgba(255,92,0,0.3)] border-b border-transparent' 
-        : 'py-6 lg:py-8 bg-transparent border-b border-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 flex justify-between items-center relative">
-        
-        <div onClick={() => navigate('home')} className="flex items-center gap-3 group cursor-pointer z-50">
-         <img src={'/images/logo.svg'} alt='logo ' />
-        </div>
+    <>
+      {/* ── Keyframes for the orange underline on active link ── */}
+      <style>{`
+        @keyframes navUnderline {
+          from { width: 0; opacity: 0; }
+          to   { width: 100%; opacity: 1; }
+        }
+      `}</style>
 
-        {/* Desktop Nav */}
-        <div className={`hidden lg:flex items-center space-x-10 px-8 py-3 rounded-full border transition-all duration-500 ${
-          scrolled 
-            ? 'bg-white/10 backdrop-blur-md border-white/20' 
-            : 'bg-white/60 backdrop-blur-md border-gray-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.01)]'
-        }`}>
-          <button onClick={() => navigate('bco')} className={`text-[13px] font-normal tracking-wide transition-colors duration-500 ${
-            scrolled 
-              ? (currentRoute === 'bco' ? 'text-white font-medium' : 'text-white/70 hover:text-white')
-              : (currentRoute === 'bco' ? 'text-[#FF5C00]' : 'text-gray-500 hover:text-gray-900')
-          }`}>
-            Gama BCO
-          </button>
-          {['Platform', 'Integrations', 'Company'].map((item) => (
-            <button key={item} onClick={() => navigate('home')} className={`text-[13px] font-normal tracking-wide transition-colors duration-500 ${
-              scrolled ? 'text-white/70 hover:text-white' : 'text-gray-500 hover:text-gray-900'
-            }`}>
-              {item}
+      <nav
+        className={`fixed w-full z-50 transition-all duration-500 ${
+          scrolled ? 'py-3' : 'py-6 lg:py-7'
+        }`}
+      >
+        {/* ── Background panel — switches from transparent to dark glass ── */}
+        <div
+          className={`absolute inset-0 transition-all duration-500 ${
+            scrolled
+              ? 'bg-[#061156]/70 backdrop-blur-xl border-b border-white/[0.07] shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
+              : 'bg-transparent border-b border-transparent'
+          }`}
+        />
+
+        {/* ── Optional: thin orange top accent line when scrolled ── */}
+        <div
+          className={`absolute top-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-[#FF5C00]/60 to-transparent transition-all duration-700 ${
+            scrolled ? 'w-full opacity-100' : 'w-0 opacity-0'
+          }`}
+        />
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex justify-between items-center relative z-10">
+
+          {/* Logo */}
+          <div
+            onClick={() => navigate('home')}
+            className="flex items-center gap-3 group cursor-pointer z-50"
+          >
+            <img src="/images/logo.svg" alt="logo" />
+          </div>
+
+          {/* ── Desktop Nav Pills ── */}
+          <div
+            className={`hidden lg:flex items-center space-x-1 px-2 py-2 rounded-full border transition-all duration-500 ${
+              scrolled
+                ? 'bg-white/[0.05] border-white/[0.08] backdrop-blur-md'
+                : 'bg-white/60 backdrop-blur-md border-gray-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.01)]'
+            }`}
+          >
+            {/* BCO link */}
+            <button
+              onClick={() => navigate('bco')}
+              className={`relative px-5 py-2 rounded-full text-[13px] font-normal tracking-wide transition-all duration-300 ${
+               scrolled
+                    ? 'text-white hover:text-white hover:bg-white/[0.06]'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
+              }`}
+            >
+              Gama BCO
+              {currentRoute === 'bco' && (
+                <span
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 h-[2px] rounded-full bg-[#FF5C00]"
+                  style={{ animation: 'navUnderline 0.3s ease forwards' }}
+                />
+              )}
             </button>
-          ))}
-        </div>
 
-        {/* Desktop Actions */}
-        <div className="hidden lg:flex items-center space-x-6">
-          <button className={`text-[13px] font-normal tracking-wide transition-colors duration-500 ${
-            scrolled ? 'text-white/90 hover:text-white' : 'text-gray-500 hover:text-gray-900'
-          }`}>
-            Log In
-          </button>
-          <button onClick={onOpenDemo} className={`px-6 py-2.5 rounded-full font-normal text-[13px] tracking-wide transition-all duration-500 hover:-translate-y-0.5 ${
-            scrolled 
-              ? 'bg-white text-[#FF5C00] shadow-[0_4px_14px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] hover:bg-gray-50' 
-              : 'bg-[#FF5C00] hover:bg-[#E65300] text-white shadow-[0_4px_14px_rgba(255,92,0,0.15)] hover:shadow-[0_6px_20px_rgba(255,92,0,0.2)]'
-          }`}>
-            Book Demo
-          </button>
-        </div>
+            {/* Other nav items */}
+            {['Platform', 'Integrations', 'Company'].map((item) => (
+              <button
+                key={item}
+                onClick={() => navigate('home')}
+                className={`px-5 py-2 rounded-full text-[13px] font-normal tracking-wide transition-all duration-300 ${
+                  scrolled
+                    ? 'text-white hover:text-white hover:bg-white/[0.06]'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
 
-        {/* Mobile Toggle */}
-        <div className="flex items-center gap-3 lg:hidden z-50">
-          <button className={`p-2 transition-colors duration-500 ${scrolled ? 'text-white' : 'text-gray-800'}`} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={24} strokeWidth={1} /> : <Menu size={24} strokeWidth={1} />}
-          </button>
-        </div>
-      </div>
+          {/* ── Desktop Actions ── */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <button
+              className={`text-[13px] font-normal tracking-wide transition-colors duration-300 px-4 py-2 rounded-full ${
+                scrolled
+                  ? 'text-white/70 hover:text-white hover:bg-white/[0.06]'
+                  : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
+              }`}
+            >
+              Log In
+            </button>
 
-      {/* Mobile Menu Dropdown */}
-      <div className={`lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-gray-200/60 transition-all duration-500 ease-in-out overflow-hidden ${mobileMenuOpen ? 'max-h-[500px] py-6 shadow-xl' : 'max-h-0 py-0 shadow-none border-transparent'}`}>
-        <div className="px-8 flex flex-col space-y-4 text-center">
-          <button onClick={() => navigate('home')} className="text-base font-light text-gray-600 hover:text-gray-900 transition-colors py-3 border-b border-gray-50">Home</button>
-          <button onClick={() => navigate('bco')} className="text-base font-light text-gray-600 hover:text-gray-900 transition-colors py-3 border-b border-gray-50">Gama BCO</button>
-          <button onClick={() => navigate('home')} className="text-base font-light text-gray-600 hover:text-gray-900 transition-colors py-3 border-b border-gray-50">Company</button>
-          
-          <div className="pt-4 flex flex-col gap-4">
-             <button className="text-base font-normal text-gray-900 py-2">Log In</button>
-             <button onClick={() => { setMobileMenuOpen(false); onOpenDemo(); }} className="bg-[#FF5C00] text-white py-3.5 rounded-full font-normal text-sm tracking-wide shadow-md">
-               Book a Demo
-             </button>
+            <button
+              onClick={onOpenDemo}
+              className={`relative px-6 py-2.5 rounded-full font-normal text-[13px] tracking-wide transition-all duration-300 overflow-hidden group hover:-translate-y-0.5 ${
+                scrolled
+                  ? 'bg-[#FF5C00] text-white shadow-[0_0_20px_rgba(255,92,0,0.35)] hover:shadow-[0_0_28px_rgba(255,92,0,0.5)]'
+                  : 'bg-[#FF5C00] text-white shadow-[0_4px_14px_rgba(255,92,0,0.25)] hover:shadow-[0_6px_20px_rgba(255,92,0,0.35)]'
+              }`}
+            >
+              {/* Shimmer sweep on hover */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+              <span className="relative z-10">Book Demo</span>
+            </button>
+          </div>
+
+          {/* ── Mobile Toggle ── */}
+          <div className="flex items-center gap-3 lg:hidden z-50">
+            <button
+              className={`p-2 rounded-lg transition-all duration-300 ${
+                scrolled
+                  ? 'text-white hover:bg-white/[0.08]'
+                  : 'text-gray-800 hover:bg-gray-100/60'
+              }`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={22} strokeWidth={1.5} /> : <Menu size={22} strokeWidth={1.5} />}
+            </button>
           </div>
         </div>
-      </div>
-    </nav>
+
+        {/* ── Mobile Menu ── */}
+        <div
+          className={`lg:hidden absolute top-full left-0 w-full transition-all duration-500 ease-in-out overflow-hidden ${
+            mobileMenuOpen
+              ? 'max-h-[500px] opacity-100'
+              : 'max-h-0 opacity-0'
+          }`}
+        >
+          {/* Glass panel */}
+          <div className="bg-[#0B0F19]/95 backdrop-blur-xl border-b border-white/[0.07] shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-6 py-6">
+
+            {/* Nav links */}
+            <div className="flex flex-col gap-1 mb-6">
+              {[
+                { label: 'Home', route: 'home' },
+                { label: 'Gama BCO', route: 'bco' },
+                { label: 'Platform', route: 'home' },
+                { label: 'Integrations', route: 'home' },
+                { label: 'Company', route: 'home' },
+              ].map(({ label, route }) => (
+                <button
+                  key={label}
+                  onClick={() => navigate(route)}
+                  className={`text-left px-4 py-3 rounded-xl text-[15px] font-light transition-all duration-200 ${
+                    currentRoute === route && route !== 'home'
+                      ? 'text-[#FF5C00] bg-[rgba(255,92,0,0.07)]'
+                      : 'text-slate-300 hover:text-white hover:bg-white/[0.05]'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-white/[0.06] mb-6" />
+
+            {/* CTA buttons */}
+            <div className="flex flex-col gap-3">
+              <button className="text-[14px] font-normal text-slate-300 py-3 px-4 rounded-xl hover:bg-white/[0.05] hover:text-white transition-all duration-200 text-left">
+                Log In
+              </button>
+              <button
+                onClick={() => { setMobileMenuOpen(false); onOpenDemo(); }}
+                className="relative bg-[#FF5C00] text-white py-3.5 rounded-full font-normal text-[14px] tracking-wide shadow-[0_0_20px_rgba(255,92,0,0.3)] overflow-hidden group"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-active:translate-x-full transition-transform duration-500" />
+                <span className="relative z-10">Book a Demo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 };
 
@@ -237,7 +336,7 @@ const SocialProofMarquee = () => {
 
       <div className="flex animate-marquee whitespace-nowrap items-center">
         {[...logos, ...logos, ...logos].map((logo, idx) => (
-          <div key={idx} className="mx-16 text-xl font-light tracking-widest text-gray-300 uppercase select-none">
+          <div key={idx} className="mx-16 text-xl font-light tracking-widest text-gray-600 uppercase select-none">
              {logo.text}
           </div>
         ))}
