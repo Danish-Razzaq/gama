@@ -1,330 +1,344 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Play, ChevronRight, Zap, Box, Map, ShieldCheck, 
-  LineChart, ArrowRight, Menu, X, CheckCircle2, Star,
-  Smartphone, Globe, Anchor, Plane, Truck, FileText, Bell,
-  Mail, FileSpreadsheet, AlertTriangle, Activity,
-  LayoutDashboard, Search, DollarSign, RefreshCw,
-  ArrowUpRight, ArrowDownUp, Crosshair, MapPin,
-  MessageSquare, Cpu, Settings, Share2, Leaf, Layers,
-  Clock, Building, ArrowLeft, Check, User, Video, Navigation, Calendar, Image
+import {
+    Map, ShieldCheck, LineChart, CheckCircle2,
+    Smartphone, FileText, Bell, AlertTriangle,
+    LayoutDashboard, MapPin, Navigation
 } from 'lucide-react';
 
-
-
-export const CrossPlatformExperience = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const sectionRefs = useRef([]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const platformFeatures = [
+// ─── Data ─────────────────────────────────────────────────────────────────────
+const platformFeatures = [
     {
-      title: "Global Command Center",
-      desc: "Give your shippers a comprehensive desktop dashboard. Track all active containerized loads and manage the supply chain from a single screen.",
-      icon: <LayoutDashboard strokeWidth={1.5} />
+        title: "Global Command Center",
+        desc: "Give your shippers a comprehensive desktop dashboard. Track all active containerized loads and manage the supply chain from a single screen.",
+        icon: LayoutDashboard,
+        tag: "Dashboard",
     },
     {
-      title: "Centralized Documents",
-      desc: "End the email chaos. Customers can securely access, upload, and approve bills of lading, commercial invoices, and customs documents.",
-      icon: <FileText strokeWidth={1.5} />
+        title: "Centralized Documents",
+        desc: "End the email chaos. Customers can securely access, upload, and approve bills of lading, commercial invoices, and customs documents.",
+        icon: FileText,
+        tag: "Documents",
     },
     {
-      title: "Port Compliance & Alerts",
-      desc: "Stay ahead of customs holds and terminal fees. Automate ISF filings and trigger real-time demurrage warnings before costs accrue.",
-      icon: <ShieldCheck strokeWidth={1.5} />
+        title: "Port Compliance & Alerts",
+        desc: "Stay ahead of customs holds and terminal fees. Automate ISF filings and trigger real-time demurrage warnings before costs accrue.",
+        icon: ShieldCheck,
+        tag: "Compliance",
     },
     {
-      title: "Analytics & Insights",
-      desc: "Provide comprehensive reporting on freight spend, lane performance, and carbon footprint directly from the dashboard.",
-      icon: <LineChart strokeWidth={1.5} />
+        title: "Analytics & Insights",
+        desc: "Provide comprehensive reporting on freight spend, lane performance, and carbon footprint directly from the dashboard.",
+        icon: LineChart,
+        tag: "Analytics",
     },
     {
-      title: "Supply Chain In Their Pocket",
-      desc: "Take the experience fully mobile. Provide a white-labeled iOS and Android app so clients can receive instant push notifications on the go.",
-      icon: <Smartphone strokeWidth={1.5} />
-    }
-  ];
+        title: "Supply Chain In Their Pocket",
+        desc: "Take the experience fully mobile. Provide a white-labeled iOS and Android app so clients can receive instant push notifications on the go.",
+        icon: Smartphone,
+        tag: "Mobile App",
+    },
+];
 
-  useEffect(() => {
-    if (!mounted) return;
+// ─── Screens ──────────────────────────────────────────────────────────────────
+const Screen0 = () => (
+  <div className="absolute inset-0 bg-[#F7F8FA] flex items-center justify-center">
     
-    const handleScroll = () => {
-      const triggerPoint = window.innerWidth < 1024 
-         ? window.innerHeight * 0.75 
-         : window.innerHeight * 0.45;
-         
-      let closestIndex = 0;
-      let minDistance = Infinity;
+    <div className="flex items-center justify-center w-full h-full">
+      <img
+        src="/images/img-1.png"
+        alt="img"
+        className="p-4"
+      />
+    </div>
 
-      sectionRefs.current.forEach((ref, index) => {
-        if (ref) {
-          const rect = ref.getBoundingClientRect();
-          const center = rect.top + rect.height / 2;
-          const distance = Math.abs(triggerPoint - center);
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestIndex = index;
-          }
-        }
-      });
-      setActiveIndex(closestIndex);
-    };
+  </div>
+);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [mounted]);
+const Screen1 = () => (
+    <div className="absolute inset-0 bg-[#F7F8FA] flex items-center justify-center">
+    
+    <div className="flex items-center justify-center w-full h-full">
+      <img
+        src="/images/img-2.png"
+        alt="img"
+        className="p-18"
+      />
+    </div>
 
-  const isMobile = activeIndex === 4;
+  </div>
+);
 
-  return (
-    <section className="relative z-10 bg-[#FAFAFA] border-y border-gray-100">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02] pointer-events-none"></div>
+const Screen2 = () => (
+   <div className="absolute inset-0 bg-[#F7F8FA] flex items-center justify-center">
+    
+    <div className="flex items-center justify-center w-full h-full">
+      <img
+        src="/images/img-3.png"
+        alt="img"
+        className="p-24"
+      />
+    </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col lg:flex-row relative">
+  </div>
+);
 
-        {/* Left Column: Text Content */}
-        <div className="w-full lg:w-[45%] pb-[10vh] lg:pb-[35vh] order-2 lg:order-1 pt-16 lg:pt-0">
-           
-           <div className="pt-16 lg:pt-48 mb-24 lg:mb-40 relative z-10 text-center lg:text-left">
-             <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-gray-200/80 bg-white shadow-sm mb-8">
-               <span className="flex h-1.5 w-1.5 rounded-full bg-[#FF5C00]"></span>
-               <span className="text-[10px] font-normal text-gray-500 tracking-[0.2em] uppercase">Omnichannel</span>
-             </div>
-             <h2 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-8 tracking-tight leading-[1.15]">
-               Your supply chain, <br/>
-               <span className="orange-hover-fx font-light mt-2 inline-block">on every screen.</span>
-             </h2>
-             <p className="text-lg sm:text-xl font-light text-gray-500 max-w-md mx-auto lg:mx-0 leading-relaxed">
-               Provide your shippers with a fully-featured, white-labeled portal synced directly with your core system. 
-             </p>
-           </div>
-
-           <div className="relative z-10">
-             <div className="absolute left-[26px] top-12 bottom-[-10vh] w-px bg-gray-200 hidden lg:block"></div>
-
-             {platformFeatures.map((f, i) => (
-                <div 
-                  key={i} 
-                  ref={el => sectionRefs.current[i] = el} 
-                  className={`relative pl-0 lg:pl-24 mb-[25vh] lg:mb-[35vh] transition-all duration-1000 ease-out flex flex-col justify-center origin-left text-center lg:text-left items-center lg:items-start ${activeIndex === i ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-12'}`}
-                >
-                    <div className={`hidden lg:block absolute left-[26px] top-8 -translate-x-1/2 w-2 h-2 rounded-full transition-all duration-700 ${activeIndex === i ? 'bg-[#FF5C00] scale-150 shadow-[0_0_10px_rgba(255,92,0,0.5)]' : 'bg-gray-300 scale-100'}`}></div>
-
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 transition-all duration-700 relative overflow-hidden ${activeIndex === i ? 'bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-gray-100 lg:translate-x-4' : 'bg-transparent border border-transparent'}`}>
-                      <div className={`relative z-10 transition-transform duration-700 ${activeIndex === i ? 'scale-110 text-[#FF5C00]' : 'scale-100 text-gray-400'}`}>
-                        {React.cloneElement(f.icon, { size: 28 })}
-                      </div>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-normal text-gray-900 mb-4 sm:mb-6 tracking-tight leading-tight">{f.title}</h3>
-                    <p className="text-base sm:text-lg font-light text-gray-500 leading-relaxed max-w-md">{f.desc}</p>
+const Screen3 = () => (
+    <div className="absolute inset-0 bg-[#F7F8FA] flex">
+        <div className="w-36 bg-white border-r border-gray-100 p-5 flex flex-col gap-3">
+            <div className="w-6 h-6 bg-gray-50 rounded-lg mb-5 mt-1" />
+            {['w-full', 'w-5/6 border-l-2 border-[#FF5C00] bg-orange-50 pl-2', 'w-2/3'].map((cls, i) => (
+                <div key={i} className={`h-1.5 ${cls} bg-gray-100 rounded-full`} />
+            ))}
+        </div>
+        <div className="flex-1 p-5 flex flex-col gap-4">
+            <div className="flex gap-3 h-20">
+                <div className="flex-1 bg-white border border-gray-100 rounded-xl p-4 flex flex-col justify-center shadow-sm">
+                    <div className="h-1.5 w-14 bg-gray-200 rounded-full mb-3" />
+                    <div className="h-4 w-20 bg-gray-800 rounded-full" />
                 </div>
-             ))}
-           </div>
+                <div className="flex-1 bg-white border border-gray-100 rounded-xl p-4 flex flex-col justify-center items-end shadow-sm">
+                    <div className="h-1.5 w-16 bg-gray-200 rounded-full mb-3" />
+                    <div className="h-4 w-14 bg-green-400 rounded-full" />
+                </div>
+            </div>
+            <div className="flex-1 bg-white border border-gray-100 rounded-xl p-4 flex items-end gap-2 shadow-sm">
+                {[40, 60, 30, 80, 50, 35, 65].map((h, i) => (
+                    <div key={i} className={`flex-1 rounded-t-sm ${i === 3 ? 'bg-[#FF5C00]/70' : 'bg-blue-100'}`} style={{ height: `${h}%` }} />
+                ))}
+            </div>
         </div>
+    </div>
+);
 
-        {/* Right Column: Sticky Morphing Hardware */}
-        <div className="w-full lg:w-[55%] h-[40vh] sm:h-[50vh] lg:h-screen sticky top-24 lg:top-0 self-start flex flex-col items-center lg:items-start xl:items-center justify-center z-0 order-1 lg:order-2 overflow-hidden pointer-events-none lg:pointer-events-auto border-b border-gray-100 lg:border-none bg-gray-50/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none lg:pl-10 xl:pl-0">
-           
-           <div className="relative w-full flex flex-col items-center lg:items-start xl:items-center justify-center transform scale-[0.55] sm:scale-[0.7] md:scale-[0.85] lg:scale-[0.9] xl:scale-100 origin-center lg:origin-left xl:origin-center transition-transform duration-700">
-               
-               <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px] pointer-events-none transition-all duration-1000 ease-in-out ${isMobile ? 'w-64 h-[500px] bg-[#FF5C00]/10' : 'w-[500px] h-[300px] bg-blue-400/10'}`}></div>
+const Screen4 = () => (
+    <div className="absolute inset-0 bg-[#F7F8FA] flex flex-col pt-14 px-5">
+        <div className="flex justify-between items-center mb-6 px-1">
+            <div className="w-14 h-2 bg-gray-200 rounded-full" />
+            <div className="w-8 h-8 rounded-full bg-white border border-gray-200 shadow-sm" />
+        </div>
+        <div className="bg-white border border-gray-100 rounded-2xl p-5 mb-4 shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-orange-50 rounded-full blur-2xl" />
+            <div className="text-[9px] text-gray-400 tracking-widest uppercase mb-2">SHP-9021</div>
+            <div className="text-lg font-normal text-gray-900 mb-5">In Transit</div>
+            <div className="flex justify-between text-[10px] text-gray-400 mb-3">
+                <span>SHA</span><span className="opacity-30">——</span><span>LAX</span>
+            </div>
+            <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div className="w-2/3 h-full bg-[#FF5C00] rounded-full" />
+            </div>
+        </div>
+        <div className="flex flex-col gap-2.5">
+            <div className="text-[9px] text-gray-400 uppercase tracking-[0.2em] mb-1 px-1">Recent Activity</div>
+            {[
+                { icon: Bell, color: 'text-[#FF5C00]', bg: 'bg-orange-50', label: 'Customs Cleared', time: '12 mins ago' },
+                { icon: MapPin, color: 'text-blue-500', bg: 'bg-blue-50', label: 'Departed Origin', time: '2 days ago' },
+            ].map(({ icon: Icon, color, bg, label, time }, i) => (
+                <div key={i} className="bg-white border border-gray-100 rounded-xl p-3.5 flex items-center gap-3 shadow-sm">
+                    <div className={`w-9 h-9 rounded-full ${bg} flex items-center justify-center ${color} flex-shrink-0`}>
+                        <Icon size={15} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                        <div className="text-[11px] font-medium text-gray-800">{label}</div>
+                        <div className="text-[10px] text-gray-400 mt-0.5">{time}</div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
 
-               {/* Morphing Device Bezel */}
-               <div 
-                 className={`relative bg-white flex flex-col overflow-hidden z-20 border border-gray-200/80
-                   transition-[width,height,border-radius,box-shadow,border-width] duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]
-                   ${isMobile 
-                     ? 'w-[280px] h-[580px] rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.12)] border-[8px]' 
-                     : 'w-[600px] h-[380px] rounded-t-2xl rounded-b-none shadow-[0_20px_50px_rgba(0,0,0,0.06)] border-[10px] border-b-[16px]'
-                   }
-                 `}
-               >
-                  {/* Laptop Camera / Phone Dynamic Island */}
-                  <div className={`absolute left-1/2 -translate-x-1/2 bg-gray-100 border border-gray-200/80 rounded-full z-30 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobile ? 'top-3 w-20 h-5' : 'top-[-5px] w-1.5 h-1.5 border-none bg-gray-300'}`}></div>
+const SCREENS = [Screen0, Screen1, Screen2, Screen3, Screen4];
 
-                  <div className={`relative w-full h-full bg-[#FAFAFA] overflow-hidden transition-all duration-1000 ${isMobile ? 'rounded-[2rem]' : 'rounded-sm'}`}>
-                     
-                     {/* Screen 0: Dashboard */}
-                     <div className={`absolute inset-0 w-full h-full bg-[#FAFAFA] flex transition-opacity duration-700 ${activeIndex === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                        <div className="w-32 sm:w-40 bg-white border-r border-gray-100 p-4 sm:p-6 flex flex-col gap-4">
-                          <div className="flex items-center gap-2 mb-4">
-                            <div className="w-5 h-5 bg-blue-50 text-blue-500 rounded-md flex items-center justify-center"><Navigation size={12} strokeWidth={1.5} /></div>
-                            <div className="h-3 w-12 sm:w-16 bg-gray-100 rounded"></div>
-                          </div>
-                          <div className="h-2 w-full bg-gray-100 rounded-full"></div>
-                          <div className="h-2 w-3/4 bg-gray-100 rounded-full"></div>
-                          <div className="h-2 w-full bg-orange-50 rounded-full"></div>
-                          <div className="h-2 w-5/6 bg-gray-100 rounded-full"></div>
+// ─── Device ───────────────────────────────────────────────────────────────────
+const DeviceShell = ({ activeIndex }) => {
+    const isMobile = activeIndex === 4;
+    return (
+        <div className="relative flex flex-col items-center">
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] pointer-events-none transition-all duration-1000 ${isMobile ? 'w-48 h-[400px] bg-[#FF5C00]/10' : 'w-[480px] h-[260px] bg-blue-200/50'}`} />
+            <div className={`relative flex flex-col overflow-hidden z-20 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobile
+                    ? 'w-[260px] h-[540px] rounded-[2.8rem] border-[6px] border-gray-800 shadow-[0_40px_80px_rgba(0,0,0,0.2)] bg-gray-800'
+                    : 'w-[560px] h-[360px] rounded-t-2xl rounded-b-none border-[8px] border-b-[14px] border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.1)] bg-gray-200'
+                }`}>
+                <div className={`absolute left-1/2 -translate-x-1/2 rounded-full z-30 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobile ? 'top-2.5 w-16 h-4 bg-gray-900' : 'top-[-4px] w-1.5 h-1.5 bg-gray-400'}`} />
+                <div className={`relative w-full h-full overflow-hidden transition-all duration-1000 ${isMobile ? 'rounded-[2.2rem]' : 'rounded-sm'}`}>
+                    {SCREENS.map((ScreenComp, i) => (
+                        <div key={i} className="absolute inset-0  transition-all duration-700" style={{
+                            opacity: activeIndex === i ? 1 : 0,
+                            transform: activeIndex === i ? 'scale(1) translateY(0)' : activeIndex > i ? 'scale(0.97) translateY(-6px)' : 'scale(1.02) translateY(6px)',
+                            pointerEvents: activeIndex === i ? 'auto' : 'none',
+                        }}>
+                            <ScreenComp />
                         </div>
-                        <div className="flex-1 p-4 sm:p-6 relative flex flex-col gap-4">
-                          <div className="flex justify-between items-center mb-2">
-                             <div className="h-4 w-24 sm:w-32 bg-gray-200 rounded-full"></div>
-                             <div className="h-6 w-16 sm:w-24 bg-white border border-gray-100 rounded-full"></div>
-                          </div>
-                          <div className="flex gap-4">
-                            <div className="flex-1 h-16 sm:h-20 bg-white rounded-xl border border-gray-100 p-3 sm:p-4 shadow-sm flex flex-col justify-end"><div className="h-2 w-1/2 bg-blue-100 rounded-full"></div></div>
-                            <div className="flex-1 h-16 sm:h-20 bg-white rounded-xl border border-gray-100 p-3 sm:p-4 shadow-sm flex flex-col justify-end"><div className="h-2 w-1/2 bg-orange-100 rounded-full"></div></div>
-                            <div className="flex-1 h-16 sm:h-20 bg-white rounded-xl border border-gray-100 p-3 sm:p-4 shadow-sm flex flex-col justify-end"><div className="h-2 w-1/2 bg-green-100 rounded-full"></div></div>
-                          </div>
-                          <div className="flex-1 bg-white rounded-xl border border-gray-100 p-4 relative overflow-hidden flex items-center justify-center shadow-sm">
-                             <Map size={240} className="text-gray-50 absolute" strokeWidth={1} />
-                             <div className="bg-white/90 backdrop-blur-md border border-gray-100 p-4 rounded-xl shadow-lg relative z-10 w-48 sm:w-64">
-                               <div className="flex justify-between items-center mb-3"><span className="text-[10px] font-normal tracking-widest text-gray-400 uppercase">SHP-9021</span><span className="w-2 h-2 bg-[#FF5C00] rounded-full animate-pulse"></span></div>
-                               <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#FF5C00] w-2/3"></div></div>
-                             </div>
-                          </div>
-                        </div>
-                     </div>
+                    ))}
+                </div>
+            </div>
+            <div className={`bg-gray-100 border border-gray-200 border-t-0 relative z-10 flex items-start justify-center transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobile ? 'w-0 h-0 opacity-0 overflow-hidden' : 'w-[620px] h-4 opacity-100 rounded-b-2xl -mt-[1px]'}`}>
+                <div className="w-20 h-1 bg-gray-300 rounded-b-md" />
+            </div>
+            {!isMobile && <div className="w-[480px] h-2 bg-black/8 blur-md rounded-full mt-0.5" />}
+        </div>
+    );
+};
 
-                     {/* Screen 1: Documents */}
-                     <div className={`absolute inset-0 w-full h-full bg-[#FAFAFA] flex transition-opacity duration-700 ${activeIndex === 1 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                        <div className="w-32 sm:w-40 bg-white border-r border-gray-100 p-4 sm:p-6 flex flex-col gap-4">
-                          <div className="flex items-center gap-2 mb-4">
-                            <div className="w-5 h-5 bg-blue-50 rounded-md"></div><div className="h-3 w-12 sm:w-16 bg-gray-100 rounded"></div>
-                          </div>
-                          <div className="h-2 w-full bg-gray-100 rounded-full"></div>
-                          <div className="h-2 w-full bg-[#FF5C00]/10 rounded-full border-l-[2px] border-[#FF5C00]"></div>
-                          <div className="h-2 w-5/6 bg-gray-100 rounded-full"></div>
+// ─── Main ─────────────────────────────────────────────────────────────────────
+export const CrossPlatformExperience = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [mounted, setMounted] = useState(false);
+    // The outer wrapper is tall (5 × 100vh) so scroll has room
+    // The inner content is sticky at top:0, height:100vh
+    const wrapperRef = useRef(null);
+
+    useEffect(() => { setMounted(true); }, []);
+
+    useEffect(() => {
+        if (!mounted) return;
+
+        const handleScroll = () => {
+            const el = wrapperRef.current;
+            if (!el) return;
+
+            const rect = el.getBoundingClientRect();
+            const scrolled = -rect.top;                        // how far we've scrolled into the section
+            const total = el.offsetHeight - window.innerHeight; // total scrollable distance
+            // progress: 0 at top, 1 at bottom
+            const progress = Math.max(0, Math.min(1, scrolled / total));
+            // map progress to step index
+            const step = Math.min(
+                platformFeatures.length - 1,
+                Math.floor(progress * platformFeatures.length)
+            );
+            setActiveIndex(step);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [mounted]);
+
+    if (!mounted) return null;
+
+    const feature = platformFeatures[activeIndex];
+    const Icon = feature.icon;
+
+    return (
+        // Tall wrapper — gives 5 scroll steps worth of space
+        <div
+            ref={wrapperRef}
+            className="relative"
+            style={{ height: `${platformFeatures.length * 100}vh` }}
+        >
+            {/* Sticky inner — always 100vh tall, content changes as you scroll */}
+            <div className="sticky top-0 h-screen bg-white border-y border-gray-100 overflow-hidden z-10">
+
+                {/* Subtle bg */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02] pointer-events-none" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_10%,transparent_100%)] pointer-events-none" />
+
+                <div className="max-w-7xl mx-auto px-6 sm:px-10 h-full flex flex-col-reverse lg:flex-row">
+
+                    {/* ── LEFT: text panel ── */}
+                    <div className="w-full lg:w-[45%] h-full flex flex-col justify-center pr-0 lg:pr-16 order-2 lg:order-1 py-10 lg:py-0">
+
+                        {/* Section label */}
+                        <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-gray-200 bg-white shadow-sm mb-10 self-start">
+                            <span className="flex h-1.5 w-1.5 rounded-full bg-[#FF5C00]" />
+                            <span className="text-[10px] font-normal text-gray-500 tracking-[0.2em] uppercase">Omnichannel</span>
                         </div>
-                        <div className="flex-1 p-4 sm:p-6 flex flex-col">
-                           <div className="flex justify-between items-center mb-6">
-                             <div className="h-4 w-24 sm:w-32 bg-gray-200 rounded-full"></div>
-                             <div className="h-7 w-20 sm:w-24 bg-white border border-gray-100 rounded-lg flex justify-center items-center"><div className="h-1.5 w-10 bg-gray-300 rounded-full"></div></div>
-                           </div>
-                           <div className="grid grid-cols-3 gap-4">
-                              {[1,2,3,4,5,6].map((i) => (
-                                <div key={i} className="bg-white border border-gray-100 rounded-xl p-3 sm:p-4 flex flex-col items-center justify-center gap-3 shadow-sm">
-                                   <FileText size={20} strokeWidth={1} className="text-gray-300" />
-                                   <div className="h-1.5 w-12 sm:w-16 bg-gray-200 rounded-full"></div>
+
+                        {/* Section heading — stays fixed */}
+                        <div className="mb-10">
+                            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-light text-gray-900 tracking-tight leading-[1.12]">
+                                Your supply chain,
+                                <br />
+                                <span className="text-[#FF5C00] font-light">on every screen.</span>
+                            </h2>
+                        </div>
+
+                        {/* Active step card — transitions on step change */}
+                        <div
+                            key={activeIndex}
+                            className="flex flex-col"
+                            style={{ animation: 'stepIn 0.55s cubic-bezier(0.22,1,0.36,1) forwards' }}
+                        >
+                            {/* Icon + tag */}
+                            <div className="flex items-center gap-3 mb-5">
+                                <div className="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center flex-shrink-0">
+                                    <Icon size={20} className="text-[#FF5C00]" strokeWidth={1.5} />
                                 </div>
-                              ))}
-                           </div>
-                        </div>
-                     </div>
-
-                     {/* Screen 2: Compliance Alerts */}
-                     <div className={`absolute inset-0 w-full h-full bg-[#FAFAFA] flex transition-opacity duration-700 ${activeIndex === 2 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                        <div className="w-32 sm:w-40 bg-white border-r border-gray-100 p-4 sm:p-6 flex flex-col gap-4">
-                          <div className="flex items-center gap-2 mb-4">
-                            <div className="w-5 h-5 bg-blue-50 rounded-md"></div><div className="h-3 w-12 sm:w-16 bg-gray-100 rounded"></div>
-                          </div>
-                          <div className="h-2 w-full bg-gray-100 rounded-full"></div>
-                          <div className="h-2 w-3/4 bg-[#FF5C00]/10 rounded-full border-l-[2px] border-[#FF5C00]"></div>
-                          <div className="h-2 w-5/6 bg-gray-100 rounded-full"></div>
-                        </div>
-                        <div className="flex-1 p-4 sm:p-6 flex flex-col gap-4">
-                           <div className="h-4 w-24 sm:w-32 bg-gray-200 rounded-full mb-2"></div>
-                           <div className="bg-white border border-red-100 border-l-[4px] border-l-red-400 rounded-xl p-4 shadow-sm flex items-center gap-4">
-                              <AlertTriangle size={20} strokeWidth={1.5} className="text-red-400" />
-                              <div>
-                                <div className="h-2 w-20 sm:w-24 bg-gray-800 rounded-full mb-2"></div>
-                                <div className="h-1.5 w-32 sm:w-40 bg-gray-400 rounded-full"></div>
-                              </div>
-                           </div>
-                           <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex items-center gap-4">
-                              <CheckCircle2 size={20} strokeWidth={1.5} className="text-green-400" />
-                              <div>
-                                <div className="h-2 w-24 sm:w-32 bg-gray-400 rounded-full mb-2"></div>
-                                <div className="h-1.5 w-20 sm:w-24 bg-gray-200 rounded-full"></div>
-                              </div>
-                           </div>
-                           <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex items-center gap-4">
-                              <CheckCircle2 size={20} strokeWidth={1.5} className="text-green-400" />
-                              <div>
-                                <div className="h-2 w-20 sm:w-28 bg-gray-400 rounded-full mb-2"></div>
-                                <div className="h-1.5 w-24 sm:w-32 bg-gray-200 rounded-full"></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-
-                     {/* Screen 3: Analytics */}
-                     <div className={`absolute inset-0 w-full h-full bg-[#FAFAFA] flex transition-opacity duration-700 ${activeIndex === 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                        <div className="w-32 sm:w-40 bg-white border-r border-gray-100 p-4 sm:p-6 flex flex-col gap-4">
-                          <div className="flex items-center gap-2 mb-4">
-                            <div className="w-5 h-5 bg-blue-50 rounded-md"></div><div className="h-3 w-12 sm:w-16 bg-gray-100 rounded"></div>
-                          </div>
-                          <div className="h-2 w-full bg-gray-100 rounded-full"></div>
-                          <div className="h-2 w-5/6 bg-[#FF5C00]/10 rounded-full border-l-[2px] border-[#FF5C00]"></div>
-                        </div>
-                        <div className="flex-1 p-4 sm:p-6 flex flex-col gap-4">
-                           <div className="flex justify-between items-center mb-2">
-                             <div className="h-4 w-24 sm:w-32 bg-gray-200 rounded-full"></div>
-                           </div>
-                           <div className="flex gap-4 h-20 sm:h-24">
-                              <div className="flex-1 bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex flex-col justify-center">
-                                 <div className="h-1.5 w-12 sm:w-16 bg-gray-300 rounded-full mb-3"></div>
-                                 <div className="h-4 sm:h-5 w-20 sm:w-24 bg-gray-800 rounded-full"></div>
-                              </div>
-                              <div className="flex-1 bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex flex-col justify-center items-end text-right">
-                                 <div className="h-1.5 w-16 sm:w-20 bg-gray-300 rounded-full mb-3"></div>
-                                 <div className="h-4 sm:h-5 w-12 sm:w-16 bg-green-400 rounded-full"></div>
-                              </div>
-                           </div>
-                           <div className="flex-1 bg-white border border-gray-100 rounded-xl p-4 sm:p-6 shadow-sm flex items-end gap-4">
-                              <div className="flex-1 bg-blue-50 rounded-t-md h-[40%]"></div>
-                              <div className="flex-1 bg-blue-50 rounded-t-md h-[60%]"></div>
-                              <div className="flex-1 bg-blue-100 rounded-t-md h-[30%]"></div>
-                              <div className="flex-1 bg-blue-400 rounded-t-md h-[80%] relative"><div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 h-1.5 sm:h-2 w-8 sm:w-10 bg-gray-800 rounded-full"></div></div>
-                              <div className="flex-1 bg-blue-50 rounded-t-md h-[50%]"></div>
-                           </div>
-                        </div>
-                     </div>
-
-                     {/* Screen 4: Mobile App */}
-                     <div className={`absolute top-0 left-0 w-full h-full bg-[#FAFAFA] flex flex-col pt-14 px-5 transition-opacity duration-700 delay-300 ${activeIndex === 4 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                         <div className="flex justify-between items-center mb-8 px-2">
-                           <div className="w-16 h-3 bg-gray-200 rounded-full"></div>
-                           <div className="w-8 h-8 rounded-full bg-white border border-gray-200"></div>
-                         </div>
-                         <div className="bg-white border border-gray-100 rounded-2xl p-6 mb-6 shadow-sm relative overflow-hidden">
-                           <div className="text-[10px] text-gray-400 font-mono tracking-widest uppercase mb-2">SHP-9021</div>
-                           <div className="text-xl font-normal tracking-tight text-gray-900 mb-6">In Transit</div>
-                           <div className="flex justify-between text-xs font-normal text-gray-400 mb-3">
-                             <span>SHA</span> <span className="opacity-30">⟶</span> <span>LAX</span>
-                           </div>
-                           <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                             <div className="w-2/3 h-full bg-[#FF5C00] rounded-full"></div>
-                           </div>
-                         </div>
-                         <div className="flex flex-col gap-3">
-                            <div className="text-[10px] font-normal text-gray-400 uppercase tracking-[0.2em] mb-1 px-2">Recent Activity</div>
-                            <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
-                               <div className="w-10 h-10 rounded-full bg-orange-50 text-[#FF5C00] flex items-center justify-center"><Bell size={16} strokeWidth={1.5}/></div>
-                               <div><div className="text-xs font-normal text-gray-900">Customs Cleared</div><div className="text-[10px] text-gray-400 mt-1">12 mins ago</div></div>
+                                <span className="text-[10px] font-medium text-[#FF5C00] uppercase tracking-[0.22em]">
+                                    {feature.tag}
+                                </span>
                             </div>
-                            <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm flex items-center gap-4">
-                               <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center"><MapPin size={16} strokeWidth={1.5}/></div>
-                               <div><div className="text-xs font-normal text-gray-900">Departed Origin</div><div className="text-[10px] text-gray-400 mt-1">2 days ago</div></div>
+
+                            {/* Title */}
+                            <h3 className="text-2xl sm:text-3xl font-normal text-gray-900 leading-snug mb-4">
+                                {feature.title}
+                            </h3>
+
+                            {/* Orange line */}
+                            <div className="w-10 h-0.5 bg-[#FF5C00] rounded-full mb-5"
+                                style={{ animation: 'lineGrow 0.6s cubic-bezier(0.22,1,0.36,1) forwards' }}
+                            />
+
+                            {/* Desc */}
+                            <p className="text-base font-light text-gray-500 leading-relaxed max-w-md">
+                                {feature.desc}
+                            </p>
+                        </div>
+
+                        {/* ── Step dots + progress bar ── */}
+                        <div className="mt-10 flex flex-col gap-4">
+                            {/* Dots */}
+                            <div className="flex items-center gap-2.5">
+                                {platformFeatures.map((_, i) => (
+                                    <div key={i} className={`rounded-full transition-all duration-500 ${i === activeIndex
+                                            ? 'w-7 h-2 bg-[#FF5C00]'
+                                            : i < activeIndex
+                                                ? 'w-2 h-2 bg-[#FF5C00]/35'
+                                                : 'w-2 h-2 bg-gray-200'
+                                        }`} />
+                                ))}
+                                {/* <span className="ml-auto text-[10px] text-gray-400 tabular-nums">
+                                    {String(activeIndex + 1).padStart(2, '0')} / {String(platformFeatures.length).padStart(2, '0')}
+                                </span> */}
                             </div>
-                         </div>
-                     </div>
 
-                  </div>
-               </div>
+                            {/* Progress track */}
+                            {/* <div className="w-full h-0.5 bg-gray-100 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full bg-[#FF5C00] rounded-full transition-all duration-700 ease-out"
+                                    style={{ width: `${((activeIndex + 1) / platformFeatures.length) * 100}%` }}
+                                />
+                            </div> */}
 
-               {/* Laptop Base (Hides on Mobile) */}
-               <div 
-                 className={`bg-white shadow-[0_20px_40px_rgba(0,0,0,0.06)] relative z-10 flex items-start justify-center border border-gray-100 border-t-0
-                   transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]
-                   ${isMobile 
-                     ? 'w-0 h-0 opacity-0 -translate-y-4 scale-50 border-none rounded-none' 
-                     : 'w-[660px] h-4 opacity-100 translate-y-0 scale-100 rounded-b-2xl -mt-[2px]'
-                   }
-                 `}
-               >
-                  <div className={`w-24 h-1.5 bg-gray-200/60 rounded-b-md transition-opacity duration-300 ${isMobile ? 'opacity-0' : 'opacity-100'}`}></div>
-               </div>
+                            {/* <p className="text-[10px] text-gray-400 font-light">
+                                Scroll to explore all features
+                            </p> */}
+                        </div>
+                    </div>
 
-           </div>
+                    {/* ── RIGHT: device ── */}
+                    <div className="w-full lg:w-[55%] h-[45vh] lg:h-full flex items-center justify-center order-1 lg:order-2 border-b border-gray-100 lg:border-none overflow-hidden bg-gray-50/50 lg:bg-transparent">
+                        <div className="transform scale-[0.52] sm:scale-[0.68] lg:scale-[0.85] xl:scale-100 origin-center transition-transform duration-700">
+                            <DeviceShell activeIndex={activeIndex} />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {/* Keyframes */}
+            <style>{`
+        @keyframes stepIn {
+          from { opacity: 0; transform: translateY(22px); }
+          to   { opacity: 1; transform: translateY(0);    }
+        }
+        @keyframes lineGrow {
+          from { width: 0;    opacity: 0; }
+          to   { width: 40px; opacity: 1; }
+        }
+      `}</style>
         </div>
-      </div>
-    </section>
-  );
+    );
 };
