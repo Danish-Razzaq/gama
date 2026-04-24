@@ -155,9 +155,9 @@ const DeviceShell = ({ activeIndex }) => {
     const isMobile = activeIndex === 4;
     return (
         <div className="relative flex flex-col items-center">
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] pointer-events-none transition-all duration-1000 ${isMobile ? 'w-48 h-[400px] bg-[#FF5C00]/10' : 'w-[480px] h-[260px] bg-blue-200/50'}`} />
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] pointer-events-none transition-all duration-1000 ${isMobile ? 'w-44 h-[300px] bg-[#FF5C00]/10' : 'w-[480px] h-[260px] bg-blue-200/50'}`} />
             <div className={`relative flex flex-col overflow-hidden z-20 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobile
-                    ? 'w-[260px] h-[540px] rounded-[2.8rem] border-[6px] border-gray-800 shadow-[0_40px_80px_rgba(0,0,0,0.2)] bg-gray-800'
+                    ? 'w-[230px] h-[440px] rounded-[2.8rem] border-[6px] border-gray-800 shadow-[0_40px_80px_rgba(0,0,0,0.2)] bg-gray-800'
                     : 'w-[560px] h-[360px] rounded-t-2xl rounded-b-none border-[8px] border-b-[14px] border-gray-200 shadow-[0_20px_60px_rgba(0,0,0,0.1)] bg-gray-200'
                 }`}>
                 <div className={`absolute left-1/2 -translate-x-1/2 rounded-full z-30 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] ${isMobile ? 'top-2.5 w-16 h-4 bg-gray-900' : 'top-[-4px] w-1.5 h-1.5 bg-gray-400'}`} />
