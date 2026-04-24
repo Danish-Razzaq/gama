@@ -860,7 +860,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-12 lg:pl-16">
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-12 lg:pl-16">
             {footerLinks.map((col, idx) => (
               <div key={idx} className="flex flex-col">
                 <h4 className="text-[10px] font-normal text-gray-400 uppercase tracking-[0.2em] mb-8">

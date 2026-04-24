@@ -241,13 +241,13 @@ export const CrossPlatformExperience = () => {
                     <div className="w-full lg:w-[45%] h-full flex flex-col justify-center pr-0 lg:pr-16 order-2 lg:order-1 py-10 lg:py-0">
 
                         {/* Section label */}
-                        <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-gray-200 bg-white shadow-sm mb-10 self-start">
+                        <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-gray-200 bg-white shadow-sm mb-4 sm:mb-10 self-start">
                             <span className="flex h-1.5 w-1.5 rounded-full bg-[#FF5C00]" />
                             <span className="text-[10px] font-normal text-gray-500 tracking-[0.2em] uppercase">Omnichannel</span>
                         </div>
 
                         {/* Section heading — stays fixed */}
-                        <div className="mb-10">
+                        <div className="mb-4 sm:mb-10">
                             <h2 className="text-3xl sm:text-4xl xl:text-5xl font-light text-gray-900 tracking-tight leading-[1.12]">
                                 Your supply chain,
                                 <br />
@@ -319,7 +319,7 @@ export const CrossPlatformExperience = () => {
                     </div>
 
                     {/* ── RIGHT: device ── */}
-                    <div className="w-full lg:w-[55%] h-[45vh] lg:h-full flex items-center justify-center order-1 lg:order-2 border-b border-gray-100 lg:border-none overflow-hidden bg-gray-50/50 lg:bg-transparent">
+                    <div className="w-full  lg:h-full flex items-center justify-center order-1 lg:order-2 border-b border-gray-100 lg:border-none overflow-hidden bg-gray-50/50 lg:bg-transparent">
                         <div className="transform scale-[0.52] sm:scale-[0.68] lg:scale-[0.85] xl:scale-100 origin-center transition-transform duration-700">
                             <DeviceShell activeIndex={activeIndex} />
                         </div>
