@@ -241,7 +241,7 @@ export const CrossPlatformExperience = () => {
                     <div className="w-full lg:w-[45%] h-full flex flex-col justify-center pr-0 lg:pr-16 order-2 lg:order-1 py-10 lg:py-0">
 
                         {/* Section label */}
-                        <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-gray-200 bg-white shadow-sm mb-4 sm:mb-10 self-start">
+                        <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-gray-200 bg-white shadow-sm mb-3 sm:mb-10 self-start">
                             <span className="flex h-1.5 w-1.5 rounded-full bg-[#FF5C00]" />
                             <span className="text-[10px] font-normal text-gray-500 tracking-[0.2em] uppercase">Omnichannel</span>
                         </div>
@@ -262,7 +262,7 @@ export const CrossPlatformExperience = () => {
                             style={{ animation: 'stepIn 0.55s cubic-bezier(0.22,1,0.36,1) forwards' }}
                         >
                             {/* Icon + tag */}
-                            <div className="flex items-center gap-3 mb-5">
+                            <div className="flex items-center gap-3 mb-2 sm:mb-5">
                                 <div className="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center flex-shrink-0">
                                     <Icon size={20} className="text-[#FF5C00]" strokeWidth={1.5} />
                                 </div>
@@ -277,7 +277,7 @@ export const CrossPlatformExperience = () => {
                             </h3>
 
                             {/* Orange line */}
-                            <div className="w-10 h-0.5 bg-[#FF5C00] rounded-full mb-5"
+                            <div className="w-10 h-0.5 bg-[#FF5C00] rounded-full mb-2 sm:mb-5"
                                 style={{ animation: 'lineGrow 0.6s cubic-bezier(0.22,1,0.36,1) forwards' }}
                             />
 
@@ -288,7 +288,7 @@ export const CrossPlatformExperience = () => {
                         </div>
 
                         {/* ── Step dots + progress bar ── */}
-                        <div className="mt-10 flex flex-col gap-4">
+                        <div className=" mt-4 sm:mt-10 flex flex-col gap-4">
                             {/* Dots */}
                             <div className="flex items-center gap-2.5">
                                 {platformFeatures.map((_, i) => (
