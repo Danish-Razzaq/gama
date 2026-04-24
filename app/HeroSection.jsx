@@ -558,14 +558,14 @@ const BcoHero = () => {
         </div>
 
         {/* Video Mockup Area */}
-        <div className={`w-full max-w-5xl mt-20 relative transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+        {/* <div className={`w-full max-w-5xl mt-20 relative transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
           <div className="relative w-full aspect-video bg-gray-900 rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.1)] overflow-hidden border-8 border-white group cursor-pointer flex items-center justify-center">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-1000"></div>
             <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:bg-[#FF5C00] group-hover:border-[#FF5C00] transition-colors duration-500 z-10">
               <Play className="text-white ml-2" size={32} fill="currentColor" strokeWidth={1} />
             </div>
           </div>
-        </div>
+        </div> */}
 
       </div>
     </section>
