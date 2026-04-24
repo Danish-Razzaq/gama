@@ -15,8 +15,8 @@ import { usePathname } from 'next/navigation';
 import { PlatformFeatures } from './components/HowItWorks'
 import { CrossPlatformExperience } from './components/CrossPlatformExperience'
 import { BcoOperationsExample } from './components/BcoOperationsExample'
-import {FinalCTA} from './components/HowItWorksFinalCTA'
-import {FinalCTA2} from './components/option2'
+import { FinalCTA } from './components/HowItWorksFinalCTA'
+import { FinalCTA2 } from './components/option2'
 
 
 // --- Custom Hooks ---
@@ -102,8 +102,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
         {/* ── Background panel — switches from transparent to dark glass ── */}
         <div
           className={`absolute inset-0 transition-all duration-500 ${scrolled
-              ? 'bg-[#0d0e169e] backdrop-blur-xl border-b border-white/[0.07] shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
-              : 'bg-transparent border-b border-transparent'
+            ? 'bg-[#0d0e169e] backdrop-blur-xl border-b border-white/[0.07] shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
+            : 'bg-transparent border-b border-transparent'
             }`}
         />
 
@@ -127,16 +127,16 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
           {/* ── Desktop Nav Pills ── */}
           <div
             className={`hidden lg:flex items-center space-x-1 px-2 py-2 rounded-full border transition-all duration-500 ${scrolled
-                ? 'bg-white/[0.05] border-white/[0.08] backdrop-blur-md'
-                : 'bg-white/60 backdrop-blur-md border-gray-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.01)]'
+              ? 'bg-white/[0.05] border-white/[0.08] backdrop-blur-md'
+              : 'bg-white/60 backdrop-blur-md border-gray-200/60 shadow-[0_2px_10px_rgba(0,0,0,0.01)]'
               }`}
           >
             {/* BCO link */}
             <button
               onClick={() => navigate('bco')}
               className={`relative px-5 py-2 rounded-full text-[13px] font-normal tracking-wide transition-all duration-300 ${scrolled
-                  ? 'text-white hover:text-white hover:bg-white/[0.06]'
-                  : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
+                ? 'text-white hover:text-white hover:bg-white/[0.06]'
+                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
                 }`}
             >
               Gama BCO
@@ -154,8 +154,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
                 key={item}
                 onClick={() => navigate('home')}
                 className={`px-5 py-2 rounded-full text-[13px] font-normal tracking-wide transition-all duration-300 ${scrolled
-                    ? 'text-white hover:text-white hover:bg-white/[0.06]'
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
+                  ? 'text-white hover:text-white hover:bg-white/[0.06]'
+                  : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
                   }`}
               >
                 {item}
@@ -167,8 +167,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
           <div className="hidden lg:flex items-center space-x-4">
             <button
               className={`text-[13px] font-normal tracking-wide transition-colors duration-300 px-4 py-2 rounded-full ${scrolled
-                  ? 'text-white/70 hover:text-white hover:bg-white/[0.06]'
-                  : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
+                ? 'text-white/70 hover:text-white hover:bg-white/[0.06]'
+                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100/60'
                 }`}
             >
               Log In
@@ -177,8 +177,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
             <button
               onClick={onOpenDemo}
               className={`relative px-6 py-2.5 rounded-full font-normal text-[13px] tracking-wide transition-all duration-300 overflow-hidden group hover:-translate-y-0.5 ${scrolled
-                  ? 'bg-[#FF5C00] text-white shadow-[0_0_20px_rgba(255,92,0,0.35)] hover:shadow-[0_0_28px_rgba(255,92,0,0.5)]'
-                  : 'bg-[#FF5C00] text-white shadow-[0_4px_14px_rgba(255,92,0,0.25)] hover:shadow-[0_6px_20px_rgba(255,92,0,0.35)]'
+                ? 'bg-[#FF5C00] text-white shadow-[0_0_20px_rgba(255,92,0,0.35)] hover:shadow-[0_0_28px_rgba(255,92,0,0.5)]'
+                : 'bg-[#FF5C00] text-white shadow-[0_4px_14px_rgba(255,92,0,0.25)] hover:shadow-[0_6px_20px_rgba(255,92,0,0.35)]'
                 }`}
             >
               {/* Shimmer sweep on hover */}
@@ -191,8 +191,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
           <div className="flex items-center gap-3 lg:hidden z-50">
             <button
               className={`p-2 rounded-lg transition-all duration-300 ${scrolled
-                  ? 'text-white hover:bg-white/[0.08]'
-                  : 'text-gray-800 hover:bg-gray-100/60'
+                ? 'text-white hover:bg-white/[0.08]'
+                : 'text-gray-800 hover:bg-gray-100/60'
                 }`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -204,8 +204,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
         {/* ── Mobile Menu ── */}
         <div
           className={`lg:hidden absolute top-full left-0 w-full transition-all duration-500 ease-in-out overflow-hidden ${mobileMenuOpen
-              ? 'max-h-[500px] opacity-100'
-              : 'max-h-0 opacity-0'
+            ? 'max-h-[500px] opacity-100'
+            : 'max-h-0 opacity-0'
             }`}
         >
           {/* Glass panel */}
@@ -224,8 +224,8 @@ const Navbar = ({ onOpenDemo, currentRoute, setCurrentRoute }) => {
                   key={label}
                   onClick={() => navigate(route)}
                   className={`text-left px-4 py-3 rounded-xl text-[15px] font-light transition-all duration-200 ${currentRoute === route && route !== 'home'
-                      ? 'text-[#FF5C00] bg-[rgba(255,92,0,0.07)]'
-                      : 'text-slate-300 hover:text-white hover:bg-white/[0.05]'
+                    ? 'text-[#FF5C00] bg-[rgba(255,92,0,0.07)]'
+                    : 'text-slate-300 hover:text-white hover:bg-white/[0.05]'
                     }`}
                 >
                   {label}
@@ -393,7 +393,7 @@ const ProductOverview = ({ setCurrentRoute }) => {
 
             <div className="flex items-center gap-4 mb-8 relative z-10">
               <div className="w-12 h-12 bg-gray-800 text-white rounded-2xl flex items-center justify-center">
-                <Layers size={24} strokeWidth={1.5}  className="text-[#FF5C00]"/>
+                <Layers size={24} strokeWidth={1.5} className="text-[#FF5C00]" />
               </div>
               <div>
                 <h3 className="text-2xl font-normal text-white tracking-wide">Climax ERP</h3>
@@ -557,7 +557,7 @@ const BcoHero = () => {
           </p>
         </div>
 
-      {/* Video Mockup Area */}
+        {/* Video Mockup Area */}
         <div className={`w-full max-w-5xl mt-20 relative transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
           <div className="relative w-full aspect-video bg-gray-900 rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.1)] overflow-hidden border-8 border-white group cursor-pointer flex items-center justify-center">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-1000"></div>
@@ -912,6 +912,8 @@ const DemoModal = ({ isOpen, onClose }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const timeSlotRef = useRef(null);
+  const detailFormRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
@@ -975,7 +977,10 @@ const DemoModal = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        <div className="w-full md:w-[55%] h-full bg-white relative flex flex-col overflow-y-auto overflow-x-hidden p-8 md:p-12 scrollbar-hide">
+        <div
+          ref={detailFormRef}
+          className="w-full md:w-[55%] h-full bg-white relative flex flex-col overflow-y-auto overflow-x-hidden p-8 md:p-12 scrollbar-hide"
+        >
 
           <button onClick={onClose} className="absolute top-6 right-6 w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-900 transition-all z-50 border border-gray-100">
             <X size={18} strokeWidth={1.5} />
@@ -1014,11 +1019,21 @@ const DemoModal = ({ isOpen, onClose }) => {
                       <button
                         key={d}
                         disabled={!isAvailable}
-                        onClick={() => { setSelectedDate(d); setSelectedTime(null); }}
+                        onClick={() => {
+                          setSelectedDate(d);
+                          setSelectedTime(null);
+
+                          setTimeout(() => {
+                            timeSlotRef.current?.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'start'
+                            });
+                          }, 250);
+                        }}
                         className={`w-10 h-10 mx-auto rounded-full flex items-center justify-center text-sm font-light transition-all duration-300 relative
                                  ${!isAvailable ? 'text-gray-300 cursor-not-allowed' : ''}
                                  ${isAvailable && !isSelected ? 'bg-transparent hover:bg-gray-50 text-gray-700 cursor-pointer border border-transparent hover:border-gray-200' : ''}
-                                 ${isSelected ? 'bg-gray-900 text-white shadow-md border border-gray-900 scale-105' : ''}
+                                 ${isSelected ? 'bg-[#FF5C00] text-white shadow-md border border-gray-900 scale-105' : ''}
                                `}
                       >
                         {d}
@@ -1028,16 +1043,30 @@ const DemoModal = ({ isOpen, onClose }) => {
                   })}
                 </div>
 
-                <div className={`transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden ${selectedDate ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className={`transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden ${selectedDate ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'} pb-8`} >
                   <div className="text-[10px] font-normal text-gray-400 uppercase tracking-[0.2em] mb-4 border-t border-gray-100 pt-6 flex items-center gap-2">
                     <Clock size={14} strokeWidth={1.5} className="text-gray-400" /> Available Times
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div ref={timeSlotRef} className="grid grid-cols-2 gap-3">
                     {timeSlots.map(time => (
                       <button
                         key={time}
-                        onClick={() => { setSelectedTime(time); setTimeout(() => setStep(1), 400); }}
-                        className={`py-3 rounded-xl border text-xs font-normal tracking-wide transition-all duration-300 ${selectedTime === time ? 'bg-gray-900 border-gray-900 text-white shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:border-gray-400'}`}
+                        onClick={() => {
+                          setSelectedTime(time);
+
+                          setTimeout(() => {
+                            setStep(1);
+
+                            setTimeout(() => {
+                              detailFormRef.current?.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                              });
+                            }, 100);
+
+                          }, 400);
+                        }}
+                        className={`py-3 rounded-xl border text-xs font-normal tracking-wide transition-all duration-300 ${selectedTime === time ? 'bg-[#FF5C00] border-gray-900 text-white shadow-md' : 'bg-white border-gray-200 text-gray-700 hover:border-gray-400'}`}
                       >
                         {time}
                       </button>
@@ -1048,7 +1077,7 @@ const DemoModal = ({ isOpen, onClose }) => {
             </div>
 
             {/* STEP 1: User Details Form */}
-            <div className={`absolute inset-0 w-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-center ${step === 1 ? 'translate-x-0 opacity-100 relative' : 'translate-x-full opacity-0 pointer-events-none'}`}>
+            <div className={`absolute inset-0 w-full mt-10 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-center ${step === 1 ? 'translate-x-0 opacity-100 relative' : 'translate-x-full opacity-0 pointer-events-none'}`}>
               <h3 className="text-2xl font-normal text-gray-900 mb-2 tracking-tight">Your Details</h3>
               <p className="text-sm text-gray-500 font-light mb-8 flex items-center gap-2">
                 <Calendar size={16} strokeWidth={1.5} className="text-gray-400" />
@@ -1056,7 +1085,7 @@ const DemoModal = ({ isOpen, onClose }) => {
               </p>
 
               <form className="flex-1 flex flex-col gap-5" onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
-                <div className="relative group">
+                <div className="relative group" >
                   <User size={18} strokeWidth={1.5} className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-gray-900 transition-colors" />
                   <input required type="text" placeholder="Full Name" className="w-full bg-transparent border-b border-gray-200 py-3 pl-8 focus:outline-none focus:border-gray-900 text-gray-900 font-light text-base transition-colors placeholder-gray-300" />
                 </div>
@@ -1111,19 +1140,19 @@ export default function App() {
     document.body.style.backgroundColor = '#FAFAFA';
   }, [mounted]);
 
-  
+
   const [isExactStep2, setIsExactStep2] = useState(false);
 
-useEffect(() => {
-  const checkHash = () => {
-    setIsExactStep2(window.location.hash === '#2');
-  };
+  useEffect(() => {
+    const checkHash = () => {
+      setIsExactStep2(window.location.hash === '#2');
+    };
 
-  checkHash(); // first load
-  window.addEventListener('hashchange', checkHash);
+    checkHash(); // first load
+    window.addEventListener('hashchange', checkHash);
 
-  return () => window.removeEventListener('hashchange', checkHash);
-}, []);
+    return () => window.removeEventListener('hashchange', checkHash);
+  }, []);
 
 
   return (
@@ -1232,8 +1261,8 @@ useEffect(() => {
           </div>
         )}
 
-{
-  isExactStep2 ? <FinalCTA2 onOpenDemo={() => setIsDemoModalOpen(true)} /> :<FinalCTA onOpenDemo={() => setIsDemoModalOpen(true)} /> }
+        {
+          isExactStep2 ? <FinalCTA2 onOpenDemo={() => setIsDemoModalOpen(true)} /> : <FinalCTA onOpenDemo={() => setIsDemoModalOpen(true)} />}
       </main>
 
       <Footer />
