@@ -319,7 +319,7 @@ export const CrossPlatformExperience = () => {
                     </div>
 
                     {/* ── RIGHT: device ── */}
-                    <div className="w-full  lg:h-full flex items-center justify-center order-1 lg:order-2 border-b border-gray-100 lg:border-none overflow-hidden bg-gray-50/50 lg:bg-transparent">
+                    <div className="w-full lg:w-[55%] h-[45vh]  lg:h-full flex items-center justify-center order-1 lg:order-2 border-b border-gray-100 lg:border-none overflow-hidden bg-gray-50/50 lg:bg-transparent">
                         <div className="transform scale-[0.52] sm:scale-[0.68] lg:scale-[0.85] xl:scale-100 origin-center transition-transform duration-700">
                             <DeviceShell activeIndex={activeIndex} />
                         </div>

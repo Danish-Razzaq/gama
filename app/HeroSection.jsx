@@ -273,12 +273,12 @@ const HomeHero = () => {
             <span className="text-[11px] font-normal text-gray-500 tracking-[0.2em] uppercase">Gama OS is Live</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light text-gray-900 leading-[1.1] mb-8 tracking-tight max-w-5xl">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl xl:text-8xl font-light text-gray-900 leading-[1.1] mb-4 sm:mb-8 tracking-tight max-w-5xl">
             The operational standard <br className="hidden sm:block" />
             <span className="orange-hover-fx font-light">for modern logistics.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl font-light text-gray-500 mb-12 max-w-2xl leading-relaxed">
+          <p className=" sm:text-xl font-light text-gray-500 mb-12 max-w-2xl leading-relaxed">
             Unify your freight forwarding, supply chain visibility, and BCO operations into a single, beautifully designed ecosystem.
           </p>
 
@@ -377,7 +377,7 @@ const ProductOverview = ({ setCurrentRoute }) => {
             <ul className="space-y-4 mb-12 relative z-10 flex-1">
               {["Real-time track & trace visibility", "Centralized document management", "Carrier & Forwarder API sync"].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-light text-gray-600">
-                  <CheckCircle2 size={16} strokeWidth={1.5} className="text-gray-300" /> {item}
+                  <CheckCircle2 size={16} strokeWidth={1.5} className="text-[#FF5C00]" /> {item}
                 </li>
               ))}
             </ul>
@@ -393,7 +393,7 @@ const ProductOverview = ({ setCurrentRoute }) => {
 
             <div className="flex items-center gap-4 mb-8 relative z-10">
               <div className="w-12 h-12 bg-gray-800 text-white rounded-2xl flex items-center justify-center">
-                <Layers size={24} strokeWidth={1.5} />
+                <Layers size={24} strokeWidth={1.5}  className="text-[#FF5C00]"/>
               </div>
               <div>
                 <h3 className="text-2xl font-normal text-white tracking-wide">Climax ERP</h3>
@@ -408,7 +408,7 @@ const ProductOverview = ({ setCurrentRoute }) => {
             <ul className="space-y-4 mb-12 relative z-10 flex-1">
               {["Automated vendor reconciliation", "Multi-currency financial reporting", "Deep enterprise ledger mapping"].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm font-light text-gray-400">
-                  <CheckCircle2 size={16} strokeWidth={1.5} className="text-gray-600" /> {item}
+                  <CheckCircle2 size={16} strokeWidth={1.5} className="text-[#FF5C00]" /> {item}
                 </li>
               ))}
             </ul>
@@ -547,7 +547,7 @@ const BcoHero = () => {
             <span className="text-[11px] font-normal text-gray-500 tracking-[0.2em] uppercase">Gama BCO Service</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 leading-[1.1] mb-8 tracking-tight max-w-4xl">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light text-gray-900 leading-[1.1] mb-8 tracking-tight max-w-4xl">
             Take control of your <br />
             <span className="orange-hover-fx font-normal">Ocean Freight.</span>
           </h1>
@@ -555,6 +555,16 @@ const BcoHero = () => {
           <p className="text-lg sm:text-xl font-light text-gray-500 mb-12 max-w-2xl leading-relaxed">
             The operational layer built strictly for exporters and importers. Bring visibility and sanity to your supply chain without forcing a massive ERP migration.
           </p>
+        </div>
+
+      {/* Video Mockup Area */}
+        <div className={`w-full max-w-5xl mt-20 relative transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+          <div className="relative w-full aspect-video bg-gray-900 rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.1)] overflow-hidden border-8 border-white group cursor-pointer flex items-center justify-center">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-1000"></div>
+            <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:bg-[#FF5C00] group-hover:border-[#FF5C00] transition-colors duration-500 z-10">
+              <Play className="text-white ml-2" size={32} fill="currentColor" strokeWidth={1} />
+            </div>
+          </div>
         </div>
 
       </div>
